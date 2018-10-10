@@ -15,21 +15,27 @@ var server = http.createServer(function(request, response){
 
 
     if(path === '/'){
-    let string = fs.readFileSync('./index.html','utf8')
-    response.statusCode = 200
+    var string = fs.readFileSync('./index.html','utf8')
+    var db = fs.readFileSync('./db','utf8')
+    string = string.replace('&&&amount&&&',db)
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
     response.write(string)
     response.end()
   }else if(path === '/style.css'){
-    let string = fs.readFileSync('./style.css','utf8')
-    response.statusCode = 200
+    var string = fs.readFileSync('./style.css','utf8')
     response.setHeader('Content-Type', 'text/css')
     response.write(string)
     response.end()
   }else if(path === '/main.js'){
-    let string = fs.readFileSync('./main.js','utf8')
+    var string = fs.readFileSync('./main.js','utf8')
     response.setHeader('Content-Type', 'application/javascript;charset=utf-8')
     response.write(string)
+    response.end()
+  }else if(path === '/pay'){
+    var amount = fs.readFileSync('./db',newAmount)
+    var newAmount = amount - 1
+    fs.writeFileSync('./db',newAmount)
+    response.write('auseccs')
     response.end()
   }else{
     response.statusCode = 404
