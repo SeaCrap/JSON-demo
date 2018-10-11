@@ -40,8 +40,7 @@ var server = http.createServer(function(request, response){
     response.write(`
      // $(query.callbackName).call(undefined,'success')
      //下面是 JSONP 语法
-      "success": true,
-      "left": ${neewAmount}
+     ${query.callback}.call(undefined,'success')
     `)
     response.end()
   }else{
