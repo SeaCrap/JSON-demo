@@ -10,8 +10,10 @@
   <button id="button">打钱</button>
   <script>
     button.addEventListener('click',(e)=>{
-      window.xxx  = function(){
-        amount.innerText = amount.innerText - 1
+      window.xxx  = function(result){
+        if(result === 'success'){
+         amount.innerText = amount.innerText - 1         
+        }
       }
       let script = document.createElement('script')
       script.src = 'http://mschen.com:8002/pay?callbackName=xxx'
