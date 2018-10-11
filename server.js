@@ -38,7 +38,7 @@ var server = http.createServer(function(request, response){
     response.setHeader('Content-type','application/javascript')
     response.statusCode = 200
     response.write(`
-      amount.innerText = amount.innerText - 1  
+      xxx.call(undefined,'success') 
     `)
     response.end()
   }else{
