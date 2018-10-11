@@ -35,10 +35,10 @@ var server = http.createServer(function(request, response){
     var amount = fs.readFileSync('./db',newAmount)
     var newAmount = amount - 1
     fs.writeFileSync('./db',newAmount)
-    response.setHeader('Content-type','application/javascript')
+    response.setHeader('Content-type','text/javascript')
     response.statusCode = 200
     response.write(`
-      amount.innerText = amount.innerText - 1  
+      functionName.call(undefined,'success')  
     `)
     response.end()
   }else{
